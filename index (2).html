@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#000000">
+<title>AlarmX</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Loading screen -->
+<div id="splash">
+  <div class="logo">
+    <span class="ring"></span><span class="ring r2"></span><span class="ring r3"></span>
+    <div class="clock"><i class="hand h"></i><i class="hand m"></i></div>
+  </div>
+  <h1>Alarm<b>X</b></h1>
+  <p class="tag">WAKE UP DIFFERENT</p>
+  <div class="bar"><div id="bar"></div></div>
+  <p id="pct">0%</p>
+  <p id="status">INITIALIZING</p>
+</div>
+
+<!-- Home screen -->
+<main id="app" class="pre">
+  <header>
+    <div><h1>Alarm<b>X</b></h1><p>Your alarms</p></div>
+    <button id="setBtn" class="small">Settings</button>
+  </header>
+
+  <div class="live"><strong class="lt">--:--</strong><span class="ld"></span></div>
+
+  <section class="next">
+    <small>NEXT ALARM</small>
+    <strong id="nextTime">--:--</strong>
+    <span id="nextLabel">No active alarms</span>
+    <em id="nextDay"></em>
+  </section>
+
+  <div class="count"><span>Alarms</span><b id="count">0</b></div>
+  <div id="list"></div>
+
+  <div id="empty" class="empty">
+    <div class="clock big"><i class="hand h"></i><i class="hand m"></i></div>
+    <h2>No alarms yet</h2>
+    <p>Create your first alarm to get started.</p>
+  </div>
+</main>
+
+<button id="newBtn" class="primary">+ &nbsp;New Alarm</button>
+
+<!-- New Alarm bottom sheet -->
+<div id="sheet" class="sheet">
+  <div class="panel">
+    <div class="grip"></div>
+    <h2>New Alarm</h2>
+
+    <div class="picker">
+      <div class="wheel" id="hourW"></div>
+      <i class="colon">:</i>
+      <div class="wheel" id="minW"></div>
+      <div class="ap"><button data-v="AM">AM</button><button data-v="PM">PM</button></div>
+      <div class="band"></div>
+    </div>
+
+    <div class="opts">
+      <button id="repeatBtn" class="opt"><span>Repeat</span><b id="repeatVal">Once</b></button>
+      <div id="repBox" class="rep">
+        <div class="chips" id="presets"></div>
+        <div class="days" id="dayChips" hidden></div>
+      </div>
+      <button class="opt"><span>Label</span><b>Alarm</b></button>
+      <button class="opt"><span>Sound</span><b>Default</b></button>
+      <button class="opt"><span>Vibration</span><b>On</b></button>
+    </div>
+
+    <div class="btns">
+      <button id="cancelBtn" class="ghost">Cancel</button>
+      <button id="createBtn" class="primary">Create Alarm</button>
+    </div>
+  </div>
+</div>
+
+<!-- Settings sheet -->
+<div id="setSheet" class="sheet">
+  <div class="panel">
+    <div class="grip"></div>
+    <h2>Settings</h2>
+    <div class="live"><strong class="lt">--:--</strong><span class="ld"></span></div>
+    <div class="set"><div><b>24-hour time</b><small>Show 19:30 instead of 7:30 PM</small></div><button id="s24" class="sw">OFF</button></div>
+    <div class="set"><div><b>Show seconds</b><small>On the live clock</small></div><button id="sSec" class="sw">OFF</button></div>
+    <div class="set"><div><b>Default repeat</b><small>Pre-selected in New Alarm</small><div class="chips" id="defRep"></div></div></div>
+    <button id="clearBtn" class="wipe">Clear all alarms</button>
+    <div class="btns"><button id="doneBtn" class="primary">Done</button></div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+*{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent}
+:root{--g:#39ff7a;--card:#0b110d;--line:#1b2b20;--dim:#6f8576;--ink:#001b09}
+html,body{height:100%;background:#000;color:#e8fff0;font-family:-apple-system,"Segoe UI",Roboto,sans-serif;overflow:hidden}
+[hidden]{display:none!important}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--g);outline-offset:2px}
+h1 b{color:var(--g)}
+
+/* ---------- Loading screen ---------- */
+#splash{position:fixed;inset:0;z-index:50;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;transition:opacity .6s}
+#splash.fade{opacity:0;pointer-events:none}
+.logo{position:relative;width:170px;height:170px;display:grid;place-items:center;margin-bottom:14px}
+.logo .clock{--s:96px}
+.ring{position:absolute;inset:0;border:2px solid var(--g);border-radius:50%;opacity:0;animation:ring 2.4s ease-out infinite}
+.r2{animation-delay:.8s}.r3{animation-delay:1.6s}
+@keyframes ring{0%{transform:scale(.5);opacity:.7}100%{transform:scale(1.15);opacity:0}}
+#splash h1{font-size:40px;font-weight:800;letter-spacing:4px}
+.tag{color:var(--dim);letter-spacing:5px;font-size:12px}
+.bar{width:220px;height:4px;margin-top:26px;background:#12201a;border-radius:4px;overflow:hidden}
+#bar{height:100%;width:0;background:var(--g);box-shadow:0 0 12px var(--g);transition:width .1s}
+#pct{font-size:22px;font-weight:700;color:var(--g)}
+#status{font-size:11px;letter-spacing:3px;color:var(--dim)}
+
+/* ---------- Clock drawn with CSS ---------- */
+.clock{--s:84px;position:relative;width:var(--s);height:var(--s);border:3px solid var(--g);border-radius:50%;box-shadow:0 0 28px #39ff7a77,inset 0 0 18px #39ff7a33}
+.clock:after{content:"";position:absolute;left:50%;top:50%;width:8px;height:8px;margin:-4px;border-radius:50%;background:var(--g)}
+.hand{position:absolute;left:50%;bottom:50%;width:3px;margin-left:-1.5px;border-radius:3px;background:var(--g);transform-origin:50% 100%;animation:spin 8s linear infinite}
+.hand.h{height:26%;animation-duration:96s}
+.hand.m{height:38%}
+@keyframes spin{to{transform:rotate(360deg)}}
+.clock.big{--s:110px;opacity:.55;box-shadow:none;margin:0 auto}
+
+/* ---------- Home ---------- */
+#app{position:fixed;inset:0;overflow-y:auto;padding:calc(env(safe-area-inset-top) + 28px) 20px 130px;transition:opacity .6s}
+#app.pre{opacity:0}
+header{display:flex;justify-content:space-between;align-items:flex-start}
+header h1{font-size:30px;font-weight:800;letter-spacing:1px}
+header p{color:var(--dim);margin-top:2px}
+.small{font-size:13px;color:var(--dim);border:1px solid var(--line);border-radius:14px;padding:8px 14px}
+.next{margin:22px 0 14px;padding:22px;border-radius:22px;background:linear-gradient(160deg,#0f2216,#070b08);border:1px solid #235a35;box-shadow:0 0 30px #39ff7a1a}
+.next small{color:var(--g);letter-spacing:3px;font-size:11px;font-weight:700}
+.next strong{display:block;font-size:52px;font-weight:300;margin:6px 0 2px;text-shadow:0 0 22px #39ff7a55}
+.next span{display:block;color:var(--dim)}
+.next em,.card em{display:block;color:var(--g);font-style:normal;font-size:13px;margin-top:2px}
+.count{display:flex;justify-content:space-between;color:var(--dim);margin:6px 4px 12px}
+.count b{color:var(--g)}
+.card{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;margin-bottom:12px;background:var(--card);border:1px solid var(--line);border-radius:20px;transition:opacity .25s}
+.card.in{animation:in .45s cubic-bezier(.2,.9,.3,1)}
+@keyframes in{from{opacity:0;transform:translateY(16px) scale(.97)}}
+.card.off{opacity:.5}
+.t{font-size:34px;font-weight:600}
+.t small{font-size:14px;color:var(--g);margin-left:6px}
+.card span{display:block;color:var(--dim);font-size:13px;margin-top:2px}
+.r{display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+.del{color:#ff6b6b;font-size:13px;padding:2px 0}
+.sw{width:64px;padding:7px 0;border-radius:16px;border:1px solid var(--line);font-size:12px;font-weight:700;letter-spacing:1px;color:var(--dim)}
+.sw.on{background:var(--g);color:var(--ink);border-color:var(--g);box-shadow:0 0 14px #39ff7a66}
+.empty{text-align:center;padding:36px 0;color:var(--dim)}
+.empty h2{color:#e8fff0;margin:20px 0 6px;font-size:20px}
+.primary{padding:18px;border-radius:20px;background:var(--g);color:var(--ink);font-weight:800;font-size:17px;letter-spacing:1px;box-shadow:0 0 28px #39ff7a66}
+#newBtn{position:fixed;left:20px;right:20px;bottom:calc(env(safe-area-inset-bottom) + 20px);z-index:5}
+
+/* ---------- New Alarm sheet ---------- */
+.sheet{position:fixed;inset:0;z-index:30;display:flex;align-items:flex-end;background:#000b;opacity:0;pointer-events:none;transition:opacity .3s}
+.sheet.open{opacity:1;pointer-events:auto}
+.panel{width:100%;max-height:94%;overflow-y:auto;padding:12px 20px calc(env(safe-area-inset-bottom) + 20px);background:#090e0a;border-top:1px solid #235a35;border-radius:28px 28px 0 0;transform:translateY(100%);transition:transform .38s cubic-bezier(.2,.9,.3,1)}
+.sheet.open .panel{transform:none}
+.grip{width:44px;height:5px;margin:0 auto 14px;background:#24352a;border-radius:5px}
+.panel h2{text-align:center;margin-bottom:6px}
+
+/* wheel time picker */
+.picker{position:relative;display:flex;align-items:center;gap:6px;padding:0 6px}
+.wheel{flex:1;height:240px;padding:96px 0;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior:contain;scrollbar-width:none}
+.wheel::-webkit-scrollbar{display:none}
+.it{height:48px;line-height:48px;text-align:center;font-size:22px;color:var(--g);opacity:.2;scroll-snap-align:center;scroll-snap-stop:always;cursor:pointer;transition:font-size .15s,opacity .15s}
+.it.near{opacity:.5;font-size:26px}
+.it.sel{opacity:1;font-size:44px;font-weight:700;text-shadow:0 0 18px #39ff7a88}
+.colon{font-style:normal;font-size:40px;color:var(--g);opacity:.8;margin-top:-6px}
+.band{position:absolute;left:0;right:0;top:96px;height:48px;border-top:1px solid #235a35;border-bottom:1px solid #235a35;pointer-events:none}
+.ap{display:flex;flex-direction:column;gap:10px;width:78px}
+.ap button{padding:12px 0;border-radius:14px;border:1px solid var(--line);color:var(--dim);font-weight:700}
+.ap button.on{border-color:var(--g);color:var(--g);box-shadow:0 0 14px #39ff7a44}
+
+/* options + repeat */
+.opts{margin-top:8px}
+.opt{display:flex;width:100%;justify-content:space-between;padding:15px 4px;border-top:1px solid var(--line);color:#c9e8d3}
+.opt b{color:var(--dim);font-weight:500}
+.rep{max-height:0;overflow:hidden;transition:max-height .35s}
+.rep.open{max-height:230px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;padding:6px 0 12px}
+.chip{padding:9px 15px;border-radius:18px;border:1px solid var(--line);color:var(--dim);font-size:14px}
+.days{display:flex;justify-content:space-between;padding-bottom:12px}
+.day{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);color:var(--dim)}
+.chip.on,.day.on{background:var(--g);color:var(--ink);border-color:var(--g);font-weight:700}
+.days.warn{animation:shake .4s}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.btns{display:flex;gap:12px;margin-top:14px}
+.btns button{flex:1}
+.ghost{padding:18px;border-radius:20px;border:1px solid var(--line);color:var(--dim);font-weight:700}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.01s!important}}
+
+/* ---------- Live clock + Settings ---------- */
+.live{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-top:20px}
+.lt{font-size:30px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--g);text-shadow:0 0 18px #39ff7a66}
+.ld{color:var(--dim);font-size:14px;text-align:right}
+.panel .live{margin:4px 4px 10px}
+.set{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 4px;border-top:1px solid var(--line)}
+.set>div{flex:1}
+.set b{display:block;font-weight:600}
+.set small{display:block;color:var(--dim);font-size:12px;margin-top:2px}
+.set .chips{padding:10px 0 0}
+.wipe{width:100%;padding:15px 4px;border-top:1px solid var(--line);color:#ff6b6b;text-align:left}
+.wipe.arm{font-weight:700}
