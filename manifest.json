@@ -1,8 +1,11 @@
 {
-  "name": "My Awesome App",
-  "short_name": "My App",
-  "start_url": "./index.html",
-  "display": "standalone",
   "background_color": "#ffffff",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "aroaram12789-star.github",
+  "orientation": "any",
+  "scope": "/index.html",
+  "short_name": "aroaram12789-star.github",
+  "start_url": "/index.html",
   "theme_color": "#000000"
 }
