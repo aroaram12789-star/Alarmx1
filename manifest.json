@@ -1,15 +1,22 @@
 {
-  "background_color": "#ffffff",
-  "dir": "ltr",
+  "name": "AlarmX",
+  "short_name": "AlarmX",
+  "start_url": "./index.html",
   "display": "standalone",
-  "name": "aroaram12789-star.github",
-  "orientation": "any",
-  "scope": "./",
-  "short_name": "aroaram12789-star.github",
-  "start_url": "/index.html",
+  "background_color": "#000000",
   "theme_color": "#000000",
-  "categories": [
-    "developer",
-    "developer tools"
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
   ]
 }
