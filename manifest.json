@@ -1,5 +1,5 @@
 {
-  "background_color": "#28630b",
+  "background_color": "#ffffff",
   "dir": "ltr",
   "display": "standalone",
   "name": "aroaram12789-star.github",
@@ -8,10 +8,8 @@
   "short_name": "aroaram12789-star.github",
   "start_url": "/index.html",
   "theme_color": "#000000",
-  "id": "Aro111",
-  "description": "Install",
-  "lang": "en",
-  "display_override": [
-    "window-controls-overlay"
+  "categories": [
+    "developer",
+    "developer tools"
   ]
 }
